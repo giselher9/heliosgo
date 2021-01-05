@@ -30,16 +30,19 @@ func main() {
 	fmt.Println("Zuluft RPM:", getValueFromHelios(client, zuluftRpm, 8))
 	fmt.Println("Abluft RPM:", getValueFromHelios(client, abluftRpm, 8))
 	fmt.Println("Lüfterstufe:", getValueFromHelios(client, lüfterstufe, 8))
+	fmt.Println("Lüfterstufe %:", getValueFromHelios(client, lüfterstufePercent, 8))
 }
 
 const (
-	lüfterstufe = "v00102" // 0x76, 0x30, 0x30, 0x31, 0x30, 0x32, 0x00, 0x00
-	außenluft   = "v00104"
-	zuluft      = "v00105"
-	fortluft    = "v00106"
-	abluft      = "v00107"
-	zuluftRpm   = "v00348"
-	abluftRpm   = "v00349" // 0x76, 0x30, 0x30, 0x33, 0x34, 0x39, 0x00, 0x00
+	// https://www.easycontrols.net/de/service/downloads/send/4-software/16-modbus-dokumentation-f%C3%BCr-kwl-easycontrols-ger%C3%A4te
+	lüfterstufe        = "v00102" // 0x76, 0x30, 0x30, 0x31, 0x30, 0x32, 0x00, 0x00
+	lüfterstufePercent = "v00103"
+	außenluft          = "v00104"
+	zuluft             = "v00105"
+	fortluft           = "v00106"
+	abluft             = "v00107"
+	zuluftRpm          = "v00348"
+	abluftRpm          = "v00349" // 0x76, 0x30, 0x30, 0x33, 0x34, 0x39, 0x00, 0x00
 )
 
 func getValueFromHelios(client modbus.Client, heliosVariable string, countBytesToRead byte) string {
