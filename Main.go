@@ -61,7 +61,7 @@ func getValueFromHelios(client modbus.Client, heliosVariable string, countBytesT
 	return getValueFromHeliosResponse(results)
 }
 
-func getValueFromHeliosResponse(heliosResult []byte) (result string) {
+func getValueFromHeliosResponse(heliosResult []byte) string {
 	return strings.SplitAfter(modbusResponseToString(heliosResult), "=")[1]
 }
 
@@ -71,5 +71,5 @@ func modbusResponseToString(data []byte) (result string) {
 			result += string(v)
 		}
 	}
-	return result
+	return
 }
